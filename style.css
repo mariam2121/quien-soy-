@@ -1,3 +1,7 @@
-
+img {
+    max-width: 50px; /* Ajusta el tamaño de las imágenes según sea necesario */
+    max-height: 50px;
+    margin-right: 5px;
+  }
 
  
