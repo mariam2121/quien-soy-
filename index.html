@@ -40,7 +40,7 @@
               </div>
               <div class="container mt-3">
                 <div id="princesas" class="row">
-                   
+                <div backdrop-filter: blur(10px);></div>
                    
                       
                 </div>
@@ -96,7 +96,7 @@ document.getElementById('Puntos').innerText = puntaje
   
   function mostrarPrincesas() {
     const princesasContainer = document.getElementById('princesas');
-    princesasContainer.innerHTML = ''; // Limpiar el contenido existente
+    princesasContainer.innerHTML = '';
 
     const imagenElement1 = document.createElement('img');
             const randomIndex = Math.floor(Math.random() * princesasImages.length);
@@ -112,7 +112,7 @@ document.getElementById('Puntos').innerText = puntaje
 
   function mostrarVillanos() {
     const villanosContainer = document.getElementById('villanos');
-    villanosContainer.innerHTML = ''; // Limpiar el contenido existente
+    villanosContainer.innerHTML = ''; 
 
     const imagenElement2 = document.createElement('img');
     const randomIndex = Math.floor(Math.random() * villanosImages.length);
@@ -125,27 +125,23 @@ document.getElementById('Puntos').innerText = puntaje
     document.getElementById('villanos').style.display = 'block';
 }
 
-const nombresPrincesas = ['elsa', 'cenicienta', 'ariel', 'bella','aurora','ana','blancanieves','mulan']; // Agrega los nombres de las princesas
-    const nombresVillanos = ['maléfica', 'ursula', 'reina malvada', 'jafar','ades','capitan garfio','cruela de vil','doctor facilier','dr facilier','lady tremaine','scar']; // Agrega los nombres de los villanos
+const nombresPrincesas = ['elsa', 'cenicienta', 'ariel', 'bella','aurora','ana','blanca nieves','mulan']; 
+    const nombresVillanos = ['maléfica', 'ursula', 'reina malvada', 'jafar','ades','capitan garfio','cruela de vil','doctor facilier','dr facilier','lady tremaine','scar']; 
 
     function verificarNombre() {
-        // Obtener el valor del campo de nombre
+        
         var nombre = document.getElementById('nombre').value;
 
         puntaje += 10;
-
-            // Actualizar la visualización del puntaje
-            document.getElementById('Puntos').innerText = puntaje;
-
-        // Verificar si el nombre es correcto para princesas
+          document.getElementById('Puntos').innerText = puntaje;
         if (nombresPrincesas.includes(nombre)) {
             document.getElementById('resultado').innerHTML = '¡El nombre es de una princesa!';
         } 
-        // Verificar si el nombre es correcto para villanos
+       
         else if (nombresVillanos.includes(nombre)) {
             document.getElementById('resultado').innerHTML = '¡El nombre es de un villano!';
         } 
-        // En caso de que el nombre no coincida con princesas ni villanos
+      
         else {
             document.getElementById('resultado').innerHTML = 'El nombre es incorrecto. Inténtalo de nuevo.';
         }

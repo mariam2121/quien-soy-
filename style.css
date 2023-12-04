@@ -6,25 +6,39 @@
     height: 20vh;
 }
 
+
+#princesas img {
+    filter: blur(0px);
+    width: 500px; 
+    height: 500px;
+    align-self: center;
+    max-width: 400px; 
+    padding: 10px; 
+    border: 1px solid #060404; 
+    border-radius: 8px; 
+     
+}
+
+#villanos img{
+    filter: blur(0px);
+    width: 500px;
+    height: 500px;
+    backdrop-filter: 10px ;
+    align-self: center;
+    max-width: 400px; 
+    padding: 10px; 
+    border: 1px solid #0d0c0c; 
+    border-radius: 8px; 
+    
+    
+}
 #formulario {
     text-align: center;
-    max-width: 400px; /* Añadido un ancho máximo al formulario */
+    max-width: 400px; 
     padding: 10px; 
     border: 1px solid #ccc; 
     border-radius: 8px; 
 }
 
 
-
   
-#princesas img {
-    filter: blur(5px);
-    width: 500px; 
-    height: 500px; 
-}
-
-#villanos img{
-    filter: blur(5px);
-    width: 500px;
-    height: 500px;
-}
