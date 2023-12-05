@@ -39,17 +39,13 @@
                 </div>
               </div>
               <div class="container mt-3">
-                
-                <div id="princesas" class="row">
-              
-                  <div>backdrop-filter: blur(10px);</div> 
-                      
+                <div id="princesas" class="row">  
                 </div>
                 <div id="villanos" class="row"> 
-                  vilanosImages.backdrop-filter: blur(10px);  
                 </div>
               </div>
 
+             
              
               <!-- casilla para verificar el personaje-->
               <div id="formulario-container">
@@ -61,7 +57,10 @@
                 <p id="resultado"></p>
               </div>
              
-              
+              <div class="container mt-3">
+                <div id="princesas" class="grid-container"></div>
+                <div id="villanos" class="grid-container"></div>
+              </div>
 
              <script>
 let indicePrincesaActual = 0;
@@ -109,6 +108,7 @@ document.getElementById('Puntos').innerText = puntaje
 
     document.getElementById('princesas').style.display = 'block';
   document.getElementById('villanos').style.display = 'none';
+  princesasContainer.style.clipPath = 'polygon(0 0, 100% 0, 100% 100%, 0 100%)';
   }
 
   //funcion para mostrar las imagenes de estan en la variable villanosImages
@@ -125,6 +125,7 @@ document.getElementById('Puntos').innerText = puntaje
     
     document.getElementById('princesas').style.display = 'none';
     document.getElementById('villanos').style.display = 'block';
+    villanosContainer.style.clipPath = 'polygon(0 0, 100% 0, 100% 100%, 0 100%)';
 }
 
 const nombresPrincesas = ['elsa', 'cenicienta', 'ariel', 'bella','aurora','ana','blanca nieves','mulan']; 
@@ -148,7 +149,21 @@ const nombresPrincesas = ['elsa', 'cenicienta', 'ariel', 'bella','aurora','ana',
     }
 }
 
-   
+function mostrarImagenes(containerId, imagesArray) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = ''; // Limpiar el contenido existente
+
+  for (const imageSrc of imagesArray) {
+    const gridItem = document.createElement('div');
+    gridItem.classList.add('grid-item');
+
+    const image = document.createElement('img');
+    image.src = imageSrc;
+    gridItem.appendChild(image);
+
+    container.appendChild(gridItem);
+  }
+}
 
 
              </script>

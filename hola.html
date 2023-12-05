@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Rejilla con Slider e Imágenes</title>
+</head>
+<body>
+    <style> body {
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+        padding: 20px;
+      }
+      
+      .controls {
+        margin-bottom: 20px;
+      }
+      
+      .grid-container {
+        display: grid;
+        grid-gap: 10px;
+        padding: 20px;
+      }
+      
+      .item {
+        background-color: #3498db;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        border-radius: 5px;
+      }
+      </style>
+    <div class="controls">
+        <label for="slider">Tamaño de las Celdas:</label>
+        <input type="range" id="slider" min="100" max="300" value="100">
+        <span id="sliderValue">100</span>
+      </div>
+    
+      <div class="grid-container" id="gridContainer">
+        <div class="item"><img id="dynamicImage" src="imagen1.jpg" alt="Imagen Dinámica"></div>
+      </div>
+
+  <script>    document.addEventListener('DOMContentLoaded', function () {
+  const slider = document.getElementById('slider');
+  const sliderValue = document.getElementById('sliderValue');
+  const dynamicImage = document.getElementById('dynamicImage');
+  const gridContainer = document.getElementById('gridContainer');
+
+  slider.addEventListener('input', function () {
+    const cellSize = slider.value;
+    sliderValue.textContent = cellSize;
+
+    // Actualiza el tamaño de las celdas en la rejilla
+    gridContainer.style.gridTemplateColumns = `repeat(auto-fill, minmax(${cellSize}px, 1fr))`;
+  });
+
+  // Función para cambiar la imagen
+  function changeImage(imagePath) {
+    dynamicImage.src = imagePath;
+  }
+
+  // Puedes llamar a la función changeImage con la ruta de la imagen que desees
+  // changeImage('nueva_imagen.jpg');
+});
+  </script>
+</body>
+</html>
