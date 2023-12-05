@@ -39,17 +39,19 @@
                 </div>
               </div>
               <div class="container mt-3">
+                
                 <div id="princesas" class="row">
               
-                   
+                  <div>backdrop-filter: blur(10px);</div> 
                       
                 </div>
-                <div id="villanos" class="row">   
+                <div id="villanos" class="row"> 
+                  vilanosImages.backdrop-filter: blur(10px);  
                 </div>
               </div>
 
              
-
+              <!-- casilla para verificar el personaje-->
               <div id="formulario-container">
                 <form id="formulario">
                     <label for="nombre">Nombre del Personaje:</label>
@@ -93,7 +95,7 @@ document.getElementById('Puntos').innerText = puntaje
   let currentIndex1 = 0;
   let currentIndex2 =0;
 
-  
+  //funcion para mostrar las imagenes de estan en la variable princesasImages
   function mostrarPrincesas() {
     const princesasContainer = document.getElementById('princesas');
     princesasContainer.innerHTML = '';
@@ -109,7 +111,7 @@ document.getElementById('Puntos').innerText = puntaje
   document.getElementById('villanos').style.display = 'none';
   }
 
-
+  //funcion para mostrar las imagenes de estan en la variable villanosImages
   function mostrarVillanos() {
     const villanosContainer = document.getElementById('villanos');
     villanosContainer.innerHTML = ''; 
@@ -127,7 +129,7 @@ document.getElementById('Puntos').innerText = puntaje
 
 const nombresPrincesas = ['elsa', 'cenicienta', 'ariel', 'bella','aurora','ana','blanca nieves','mulan']; 
     const nombresVillanos = ['maléfica', 'ursula', 'reina malvada', 'jafar','ades','capitan garfio','cruela de vil','doctor facilier','dr facilier','lady tremaine','scar']; 
-
+    // funcion para verificar el nombre y que salga un mensaje. si acierta se suman 10 puntos, si se equivoca se restan 10 puntos
     function verificarNombre() {
     var nombre = document.getElementById('nombre').value;
 
@@ -140,7 +142,7 @@ const nombresPrincesas = ['elsa', 'cenicienta', 'ariel', 'bella','aurora','ana',
         document.getElementById('Puntos').innerText = puntaje;
         document.getElementById('resultado').innerHTML = '¡El nombre es correcto';
     } else {
-        puntaje -= 10; // Restar 10 puntos en caso de nombre incorrecto
+        puntaje -= 10; 
         document.getElementById('Puntos').innerText = puntaje;
         document.getElementById('resultado').innerHTML = 'El nombre es incorrecto se restaron 10 puntos';
     }
