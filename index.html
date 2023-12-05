@@ -40,7 +40,7 @@
               </div>
               <div class="container mt-3">
                 <div id="princesas" class="row">
-                <div backdrop-filter: blur(10px);></div>
+              
                    
                       
                 </div>
@@ -56,11 +56,11 @@
                     <input type="text" id="nombre" name="nombre" required>
                     <button type="button" onclick ="verificarNombre()">Verificar</button>
                 </form>
-
-
                 <p id="resultado"></p>
               </div>
              
+              
+
              <script>
 let indicePrincesaActual = 0;
 let puntaje = 0;
@@ -129,23 +129,23 @@ const nombresPrincesas = ['elsa', 'cenicienta', 'ariel', 'bella','aurora','ana',
     const nombresVillanos = ['maléfica', 'ursula', 'reina malvada', 'jafar','ades','capitan garfio','cruela de vil','doctor facilier','dr facilier','lady tremaine','scar']; 
 
     function verificarNombre() {
-        
-        var nombre = document.getElementById('nombre').value;
+    var nombre = document.getElementById('nombre').value;
 
+    if (nombresPrincesas.includes(nombre)) {
         puntaje += 10;
-          document.getElementById('Puntos').innerText = puntaje;
-        if (nombresPrincesas.includes(nombre)) {
-            document.getElementById('resultado').innerHTML = '¡El nombre es de una princesa!';
-        } 
-       
-        else if (nombresVillanos.includes(nombre)) {
-            document.getElementById('resultado').innerHTML = '¡El nombre es de un villano!';
-        } 
-      
-        else {
-            document.getElementById('resultado').innerHTML = 'El nombre es incorrecto. Inténtalo de nuevo.';
-        }
+        document.getElementById('Puntos').innerText = puntaje;
+        document.getElementById('resultado').innerHTML = '¡El nombre es correcto';
+    } else if (nombresVillanos.includes(nombre)) {
+        puntaje += 10;
+        document.getElementById('Puntos').innerText = puntaje;
+        document.getElementById('resultado').innerHTML = '¡El nombre es correcto';
+    } else {
+        puntaje -= 10; // Restar 10 puntos en caso de nombre incorrecto
+        document.getElementById('Puntos').innerText = puntaje;
+        document.getElementById('resultado').innerHTML = 'El nombre es incorrecto se restaron 10 puntos';
     }
+}
+
    
 
 
