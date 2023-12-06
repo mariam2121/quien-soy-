@@ -1,18 +1,28 @@
-
 #formulario-container {
     display: flex;
     justify-content: center;
-    height: 20vh;
+    align-items: center;
+    height: 25vh;
+}
+
+#formulario {
+    text-align: center;
+    max-width: 550px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+#slider {
+    width: 100%;
+    margin-top: 10px;
 }
 
 #princesas img,
 #villanos img {
- 
-    filter: blur(15px);
-        transition: clip-path 0s ease-in-out;
-        clip-path: inset(10px 10px 10px 10px);
-
-
+   
+    transition: clip-path 0s ease-in-out, transform 0.3s ease-in-out;
+    clip-path: inset(10px 10px 10px 10px);
     width: 500px;
     height: 500px;
     align-self: center;
@@ -20,18 +30,15 @@
     padding: 10px;
     border: 1px solid #060404;
     border-radius: 8px;
-    outline: 1px solid #000000; /* Añadir cuadrícula blanca */
+    outline: 1px solid #000000;
+    max-width: 100%;
+    margin-top: 20px;
 }
 
-#formulario {
-    text-align: center;
-    max-width: 400px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+input {
+    margin-top: 10px;
 }
 
-/* Agregar estilos para los botones de categorías */
 .container {
     text-align: center;
 }
@@ -42,7 +49,12 @@
     cursor: pointer;
 }
 
-/* Agregar estilos para la cuadrícula en los botones de categorías */
 .container button:hover {
     background-color: #c91212;
 }
+#enfoque-slider {
+    width: 100%;
+    margin-top: 10px;
+    
+}
+

@@ -53,46 +53,84 @@
                     <label for="nombre">Nombre del Personaje:</label>
                     <input type="text" id="nombre" name="nombre" required>
                     <button type="button" onclick ="verificarNombre()">Verificar</button>
+                    <label for="slider">Nivel de Desenfoque:</label>
+                    <input type="range" id="slider" min="0" max="20" step="1" value="15" />
+                    <label for="enfoque-slider">Nivel de Enfoque:</label>
+                    <input type="range" id="enfoque-slider" min="0" max="100" step="1" value="0" />
                 </form>
                 <p id="resultado"></p>
               </div>
              
-              <div class="container mt-3">
-                <div id="princesas" class="grid-container"></div>
-                <div id="villanos" class="grid-container"></div>
-              </div>
-
+              <div id="contenedor">
+                <div id="princesas">
+                    <img id="princesa-imagen" src="" alt="Princesa">
+                </div>
+        
+                <div id="villanos">
+                    <img id="villano-imagen" src="" alt="Villano">
+                    
+                </div>
+            </div>
+        
              <script>
 let indicePrincesaActual = 0;
 let puntaje = 0;
-document.getElementById('Puntos').innerText = puntaje
+        document.getElementById('Puntos').innerText = puntaje;
 
-  const princesasImages = [
-    'imagenes/princesa_ana.png',
-    'imagenes/princesa_ariel.png',
-    'imagenes/princesa_aurora.png',
-    'imagenes/princesa_bella.png',
-    'imagenes/princesa_Blancanieves.png',
-    'imagenes/princesa_cenicienta.png',
-    'imagenes/princesa_elsa.png',
-    'imagenes/princesa_mulan.png'
-  ];
+        const princesasImages = [
+            'imagenes/princesa_ana.png',
+            'imagenes/princesa_ariel.png',
+            'imagenes/princesa_aurora.png',
+            'imagenes/princesa_bella.png',
+            'imagenes/princesa_Blancanieves.png',
+            'imagenes/princesa_cenicienta.png',
+            'imagenes/princesa_elsa.png',
+            'imagenes/princesa_mulan.png'
+        ];
 
-  const villanosImages = [
-  'imagenes/villano_ades.png',
-  'imagenes/villano_capitangarfio.png',
-  'imagenes/villano_crueladevil.png',
-  'imagenes/villano_DoctorFacilier.png',
-  'imagenes/villano_jafar.png',
-  'imagenes/villano_ladyTremaine.png',
-  'imagenes/villano_malefica.png',
-  'imagenes/villano_scar.png',
-  'imagenes/villano_ursula.png'
-];
+        const villanosImages = [
+            'imagenes/villano_ades.png',
+            'imagenes/villano_capitangarfio.png',
+            'imagenes/villano_crueladevil.png',
+            'imagenes/villano_DoctorFacilier.png',
+            'imagenes/villano_jafar.png',
+            'imagenes/villano_ladyTremaine.png',
+            'imagenes/villano_malefica.png',
+            'imagenes/villano_scar.png',
+            'imagenes/villano_ursula.png'
+        ];
+                  //sliders
+        const contenedor = document.getElementById('contenedor');
+        const princesaImagen = document.getElementById('princesa-imagen');
+        const villanoImagen = document.getElementById('villano-imagen');
+        const slider = document.getElementById('slider');
+        const enfoqueSlider = document.getElementById('enfoque-slider');
+
+        let imagenIndex = 0;
+
+        slider.addEventListener('input', () => {
+            const desenfoqueValue = slider.value;
+            princesaImagen.style.filter = `blur(${desenfoqueValue}px)`;
+            villanoImagen.style.filter = `blur(${desenfoqueValue}px)`;
+        });
+
+        enfoqueSlider.addEventListener('input', () => {
+            const enfoqueValue = enfoqueSlider.value;
+            princesaImagen.style.transform = `scale(${1 + enfoqueValue / 100})`;
+            villanoImagen.style.transform = `scale(${1 + enfoqueValue / 100})`;
+        });
+
+        function cambiarImagen() {
+            princesaImagen.src = princesasImages[imagenIndex];
+            villanoImagen.src = villanosImages[imagenIndex];
+        }
+
+  
+        cambiarImagen();
 
 
-  let currentIndex1 = 0;
-  let currentIndex2 =0;
+       
+
 
   //funcion para mostrar las imagenes de estan en la variable princesasImages
   function mostrarPrincesas() {
@@ -132,40 +170,24 @@ const nombresPrincesas = ['elsa', 'cenicienta', 'ariel', 'bella','aurora','ana',
     const nombresVillanos = ['maléfica', 'ursula', 'reina malvada', 'jafar','ades','capitan garfio','cruela de vil','doctor facilier','dr facilier','lady tremaine','scar']; 
     // funcion para verificar el nombre y que salga un mensaje. si acierta se suman 10 puntos, si se equivoca se restan 10 puntos
     function verificarNombre() {
-    var nombre = document.getElementById('nombre').value;
+            var nombre = document.getElementById('nombre').value;
 
-    if (nombresPrincesas.includes(nombre)) {
-        puntaje += 10;
-        document.getElementById('Puntos').innerText = puntaje;
-        document.getElementById('resultado').innerHTML = '¡El nombre es correcto';
-    } else if (nombresVillanos.includes(nombre)) {
-        puntaje += 10;
-        document.getElementById('Puntos').innerText = puntaje;
-        document.getElementById('resultado').innerHTML = '¡El nombre es correcto';
-    } else {
-        puntaje -= 10; 
-        document.getElementById('Puntos').innerText = puntaje;
-        document.getElementById('resultado').innerHTML = 'El nombre es incorrecto se restaron 10 puntos';
-    }
-}
+            if (nombresPrincesas.includes(nombre)) {
+                puntaje += 10;
+                document.getElementById('Puntos').innerText = puntaje;
+                document.getElementById('resultado').innerHTML = '¡El nombre es correcto';
+            } else if (nombresVillanos.includes(nombre)) {
+                puntaje += 10;
+                document.getElementById('Puntos').innerText = puntaje;
+                document.getElementById('resultado').innerHTML = '¡El nombre es correcto';
+            } else {
+                puntaje -= 10;
+                document.getElementById('Puntos').innerText = puntaje;
+                document.getElementById('resultado').innerHTML = 'El nombre es incorrecto se restaron 10 puntos';
+            }
+        }
 
-function mostrarImagenes(containerId, imagesArray) {
-  const container = document.getElementById(containerId);
-  container.innerHTML = ''; // Limpiar el contenido existente
-
-  for (const imageSrc of imagesArray) {
-    const gridItem = document.createElement('div');
-    gridItem.classList.add('grid-item');
-
-    const image = document.createElement('img');
-    image.src = imageSrc;
-    gridItem.appendChild(image);
-
-    container.appendChild(gridItem);
-  }
-}
-
-
+        
              </script>
 </body>
 </html>
